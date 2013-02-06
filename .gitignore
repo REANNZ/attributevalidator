@@ -1,0 +1,71 @@
+# Our application config
+application_config.groovy
+
+# web application files
+/web-app/WEB-INF
+
+# IDE support files
+/.classpath
+/.launch
+/.project
+/.settings
+/*.launch
+/*.tmproj
+/ivy*
+/eclipse
+
+# default HSQL database files for production mode
+/prodDb.*
+
+# general HSQL database files
+*Db.properties
+*Db.script
+
+# logs
+/stacktrace.log
+/test/reports
+/logs
+
+# project release file
+/*.war
+
+# plugin release file
+/*.zip
+
+# older plugin install locations
+/plugins
+/web-app/plugins
+/web-app/WEB-INF/classes
+
+# "temporary" build files
+/target
+
+# other
+*.iws
+cobertura.ser
+.DS_Store
+
+plugin.xml
+
+# grails image crap
+web-app/images/apple-touch-icon-retina.png
+web-app/images/apple-touch-icon.png
+web-app/images/favicon.ico
+web-app/images/grails_logo.jpg
+web-app/images/grails_logo.png
+web-app/images/leftnav_btm.png
+web-app/images/leftnav_midstretch.png
+web-app/images/leftnav_top.png
+web-app/images/skin/database_add.png
+web-app/images/skin/database_delete.png
+web-app/images/skin/database_edit.png
+web-app/images/skin/database_save.png
+web-app/images/skin/database_table.png
+web-app/images/skin/exclamation.png
+web-app/images/skin/house.png
+web-app/images/skin/information.png
+web-app/images/skin/shadow.jpg
+web-app/images/skin/sorted_asc.gif
+web-app/images/skin/sorted_desc.gif
+web-app/images/spinner.gif
+web-app/images/springsource.png

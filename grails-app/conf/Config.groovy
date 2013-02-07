@@ -1,7 +1,7 @@
 import javax.naming.InitialContext
 import javax.naming.Context
 
-// Import externalized configuration for the Virtual Home Registry application
+// Import externalized configuration
 def externalConf = getFromEnvironment("config_dir")
 if(externalConf) {
   grails.config.locations = ["file:${externalConf}/application_config.groovy"]

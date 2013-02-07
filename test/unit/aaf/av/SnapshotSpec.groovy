@@ -12,7 +12,8 @@ class SnapshotSpec extends spock.lang.Specification {
 
   private Snapshot createValidSnapshot() {
     def snapshot = Snapshot.build(cn: 'test user', mail:'user@test.com', eduPersonAssurance:'urn:mace:aaf.edu.au:iap:id:0', 
-                  authenticationMethod:'urn:mace:aaf.edu.au:iap:authn:0', eduPersonScopedAffiliation:'member@test.com',
+                  displayName: 'test user', authenticationMethod:'urn:mace:aaf.edu.au:iap:authn:0', eduPersonScopedAffiliation:'member@test.com',
+                  eduPersonTargetedID:'http://idp.test.edu!http://sp.test.com!1234', o: 'Test Org', eduPersonAffiliation: 'member', 
                   schacHomeOrganization:'test.com', schacHomeOrganizationType:'urn:test', auEduPersonSharedToken:'0DzXjxDQ9eCQu5BMbl4hrodsAYc')
 
     mockForConstraintsTests(Snapshot, [snapshot])

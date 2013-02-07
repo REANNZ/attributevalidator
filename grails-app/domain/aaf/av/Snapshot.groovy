@@ -4,9 +4,16 @@ import org.apache.commons.validator.EmailValidator
 
 class Snapshot {
 
-  private static final affiliations = ["faculty", "student", "staff", "employee", "member", "affiliate", "alum", "library-walk-in"]
+  private static final affiliations = ['faculty', 'student', 'staff', 'employee', 'member', 'affiliate', 'alum', 'library-walk-in']
+
+  public static final coreAttributes = ['cn', 'mail', 'auEduPersonSharedToken', 'displayName', 'eduPersonAssurance', 'eduPersonAffiliation', 
+                                        'eduPersonScopedAffiliation', 'eduPersonEntitlement', 'eduPersonTargetedID', 
+                                        'o', 'authenticationMethod']
+  public static final optionalAttributes = ['givenName', 'surname', 'mobileNumber', 'telephoneNumber', 'postalAddress', 'organizationalUnit', 
+                                            'schacHomeOrganization', 'schacHomeOrganizationType']
 
   Date dateCreated
+  static belongsTo = [subject:aaf.base.identity.Subject]
 
   // AAF attributes
   
@@ -34,16 +41,17 @@ class Snapshot {
   String schacHomeOrganizationType      // oid:1.3.6.1.4.1.25178.1.2.10
 
   static constraints = {
-    cn (nullable:false, blank:false, validator: validCn)
-    mail (validator: validMail)
-    auEduPersonSharedToken (nullable:false, blank:false, size: 27..27, matches: '^[A-z0-9_-]+$')
-    displayName (nullable:false, blank:false)
-    eduPersonAssurance (nullable:false, blank:false, validator: validEduPersonAssurance)
-    eduPersonAffiliation (nullable:false, blank:false, inList: Snapshot.affiliations)
-    eduPersonScopedAffiliation (nullable:false, blank:false, validator: validEduPersonScopedAffiliation)
-    eduPersonTargetedID (nullable:false, blank:false)
-    o (nullable:false, blank:false)
-    authenticationMethod (nullable:false, blank:false, validator: validAuthenticationMethod)
+    cn (nullable:true, blank:false, validator: validCn)
+    mail (nullable:true, validator: validMail)
+    auEduPersonSharedToken (nullable:true, blank:false, size: 27..27, matches: '^[A-z0-9_-]+$', validator: {if(!it) return false })
+    displayName (nullable:true, blank:false, validator: {if(!it) return false })
+    eduPersonAssurance (nullable:true, blank:false, validator: validEduPersonAssurance)
+    eduPersonAffiliation (nullable:true, blank:false, inList: Snapshot.affiliations, validator: {if(!it) return false })
+    eduPersonScopedAffiliation (nullable:true, blank:false, validator: validEduPersonScopedAffiliation)
+    eduPersonEntitlement (nullable:true)
+    eduPersonTargetedID (nullable:true, blank:false, validator: {if(!it) return false })
+    o (nullable:true, blank:false, validator: {if(!it) return false })
+    authenticationMethod (nullable:true, blank:false, validator: validAuthenticationMethod)
 
     givenName (nullable:true, blank:true)
     surname (nullable:true, blank:true)
@@ -58,15 +66,19 @@ class Snapshot {
   }
 
   static validCn = { value, obj ->
-    value.count(' ') <= 1
+    if(!value) { return false }
+
+    value?.count(' ') <= 1
   }
 
   static validMail = { value, obj ->
+    if(!value) { return false }
+
     EmailValidator emailValidator = EmailValidator.getInstance()
     boolean valid = true
 
-    if (value.contains(";")) {
-      value.split(";").each { val -> valid = valid ? emailValidator.isValid(val):false  }
+    if (value?.contains(";")) {
+      value?.split(";").each { val -> valid = valid ? emailValidator.isValid(val):false  }
     } 
     else { valid = emailValidator.isValid(value) }
 
@@ -74,16 +86,22 @@ class Snapshot {
   }
 
   static validEduPersonAssurance = { value, obj ->
+    if(!value) { return false }
+
     String regex = 'urn:mace:aaf.edu.au:iap:id:[0-4]'
     Snapshot.attributeMatches(regex, value)
   }
 
   static validAuthenticationMethod = { value, obj ->
+    if(!value) { return false }
+
     String regex = 'urn:mace:aaf.edu.au:iap:authn:[0-4]'
     Snapshot.attributeMatches(regex, value, false)
   }
 
   static validEduPersonScopedAffiliation = { value, obj ->
+    if(!value) { return false }
+
     String regex = "(${Snapshot.affiliations.join('|')})@((([A-z0-9\\-]+)\\.)*[A-z0-9\\-]+)"
     Snapshot.attributeMatches(regex, value)
   }
@@ -92,8 +110,8 @@ class Snapshot {
     boolean valid = true
 
     // Those which are multivaluded have values seperated by ; (Shibboleth SP standard)
-    if (value.contains(";") && multivalued) {
-      value.split(";").each { attr -> valid = valid ? attr =~ regex:false }
+    if (value?.contains(";") && multivalued) {
+      value?.split(";").each { attr -> valid = valid ? attr =~ regex:false }
     } 
     else { valid = value =~ regex }
 

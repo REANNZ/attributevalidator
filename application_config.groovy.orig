@@ -1,17 +1,24 @@
 import org.apache.log4j.DailyRollingFileAppender
 
-// DEVELOPMENT CONFIGURATION - DELETE BELOW BLOCK IF PRODUCTION
-greenmail.disabled = false
+appName=""
 grails {
-  resources.debug = true
-  gsp.enable.reload = true
-  logging.jul.usebridge = true
-  mail {
-    port = com.icegreen.greenmail.util.ServerSetupTest.SMTP.port
-  }
+  serverURL = "http://localhost:8080/${appName}"
+  mail.default.from="noreply@aaf.edu.au"
 }
+
 environments {
+  // REMOVE IF PRODUCTION
   development {
+    greenmail.disabled = false
+    grails {
+      resources.debug = true
+      gsp.enable.reload = true
+      logging.jul.usebridge = true
+      mail {
+        port = com.icegreen.greenmail.util.ServerSetupTest.SMTP.port
+      }
+    }
+
     dataSource {
       pooled = true
       driverClassName = "org.h2.Driver"
@@ -21,33 +28,24 @@ environments {
       url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
     }
   }
-}
-// END DEVELOPMENT CONFIGURATION - DELETE ABOVE BLOCK IF PRODUCTION
 
-// PRODUCTION CONFIGURATION - DELETE BELOW BLOCK IF DEVELOPMENT
-greenmail.disabled = true
-testDataConfig.enabled = false
-grails {
-  resources.debug = false  
-  gsp.enable.reload = false
-  logging.jul.usebridge = false
-  mail {
-    host = 'localhost' // More advanced mail config available per: http://grails.org/plugin/mail
-  }
-}
-dataSource {
-  dbCreate = "update"
-  dialect= org.hibernate.dialect.MySQL5InnoDBDialect
-  jndiName= "java:comp/env/jdbc/APPNAME" 
-}
-// END PRODUCTION CONFIGURATION - DELETE ABOVE BLOCK IF DEVELOPMENT
-
-// COMMON CONFIGURATION
-appName=""
-grails {
-  serverURL = ""
-  mail {
-    default.from="noreply@aaf.edu.au"
+  // REMOVE IF DEVELOPMENT
+  production {
+    greenmail.disabled = true
+    testDataConfig.enabled = false
+    grails {
+      resources.debug = false  
+      gsp.enable.reload = false
+      logging.jul.usebridge = false
+      mail {
+        host = 'localhost' // More advanced mail config available per: http://grails.org/plugin/mail
+      }
+    }
+    dataSource {
+      dbCreate = "update"
+      dialect= org.hibernate.dialect.MySQL5InnoDBDialect
+      jndiName= "java:comp/env/jdbc/APPNAME" 
+    }
   }
 }
 

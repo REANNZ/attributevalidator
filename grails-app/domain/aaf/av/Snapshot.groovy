@@ -53,8 +53,8 @@ class Snapshot {
     o (nullable:true, blank:false, validator: {if(!it) return false })
     authenticationMethod (nullable:true, blank:false, validator: validAuthenticationMethod)
 
-    givenName (nullable:true, blank:true)
-    surname (nullable:true, blank:true)
+    givenName (nullable:true, blank:true, validator: validGivenName)
+    surname (nullable:true, blank:true, validator: validSurname)
     mobileNumber (nullable:true, blank:true)
     telephoneNumber (nullable:true, blank:true)
     postalAddress (nullable:true, blank:true)
@@ -67,6 +67,8 @@ class Snapshot {
 
   static validCn = { value, obj ->
     if(!value) { return false }
+
+    if(value.contains(';')) { return false }
 
     value?.count(' ') <= 1
   }
@@ -104,6 +106,22 @@ class Snapshot {
 
     String regex = "(${Snapshot.affiliations.join('|')})@((([A-z0-9\\-]+)\\.)*[A-z0-9\\-]+)"
     Snapshot.attributeMatches(regex, value)
+  }
+
+  static validGivenName = { value, obj ->
+    if(!value) { return true }
+
+    if(value.contains(';')) { return false }
+
+    value?.count(' ') < 1
+  }
+
+  static validSurname = { value, obj ->
+    if(!value) { return true }
+
+    if(value.contains(';')) { return false }
+
+    value?.count(' ') < 1
   }
 
   private static boolean attributeMatches(String regex, String value, boolean multivalued = true) {

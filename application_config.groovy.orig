@@ -1,13 +1,12 @@
 import org.apache.log4j.DailyRollingFileAppender
 
-appName=""
+appName="attributevalidator"
 grails {
-  serverURL = "http://localhost:8080/${appName}"
+  serverURL = "http://aaf.dev.bradleybeddoes.com/${appName}"
   mail.default.from="noreply@aaf.edu.au"
 }
 
 environments {
-  // REMOVE IF PRODUCTION
   development {
     greenmail.disabled = false
     grails {
@@ -29,7 +28,6 @@ environments {
     }
   }
 
-  // REMOVE IF DEVELOPMENT
   production {
     greenmail.disabled = true
     testDataConfig.enabled = false
@@ -59,7 +57,7 @@ aaf {
     deployment_environment = "development"
 
     administration {
-      initial_administrator_auto_populate = false
+      initial_administrator_auto_populate = true
     }
 
     realms {
@@ -74,6 +72,11 @@ aaf {
         // See https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAttributeAccess for more
         request.attributes = true 
         
+        require {
+          sharedtoken = false
+          cn = false
+          email = false
+        }
         
         mapping {
           principal = "persistent-id"   // The unique and persistent ID used to identify this principal for current and subsequent sessions (eduPersonTargetedID)
@@ -86,6 +89,26 @@ aaf {
           cn = "cn"
           email= "mail"
           sharedToken = "auEduPersonSharedToken"
+
+          mail = "mail"
+          auEduPersonSharedToken = "auEduPersonSharedToken"
+          displayName = "displayName"
+          eduPersonAssurance = "assurance"
+          eduPersonAffiliation = "unscoped-affiliation"
+          eduPersonScopedAffiliation = "affiliation"
+          eduPersonEntitlement = "entitlement"
+          eduPersonTargetedID = "persistent-id"
+          o = "o"
+          authenticationMethod = "authenticationMethod"
+          
+          givenName = "givenName"
+          surname = "sn"
+          mobileNumber = "mobileNumber"
+          telephoneNumber = "telephoneNumber"
+          postalAddress = "postalAddress"
+          organizationalUnit = "organizationalUnit"
+          schacHomeOrganization = "homeOrganization"
+          schacHomeOrganizationType = "homeOrganizationType"
         }
 
         development {

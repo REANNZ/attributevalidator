@@ -1,5 +1,9 @@
 package aaf.av
 
+import aaf.base.identity.Subject
+
+import org.apache.shiro.SecurityUtils
+
 class SnapshotController {
 
   final CURRENT_SNAPSHOT = "aaf.av.SnapshotController.CURRENT_SNAPSHOT"
@@ -28,6 +32,32 @@ class SnapshotController {
     else { snapshot.validate() }
 
     [snapshot:snapshot]
+  }
+
+  def historical = {
+    if(SecurityUtils.subject.isPermitted('app:administration')) {
+      def subjects = Subject.list()
+      [subjects:subjects]
+    } else {
+      log.warn "Attempt to do administrative historical account listing by $subject was denied - not permitted by assigned permissions"
+      response.sendError 403
+    }
+  }
+
+  def historicalsubject = {
+    if(SecurityUtils.subject.isPermitted('app:administration')) {
+      def subject = Subject.get(params.id)
+
+      if(!subject) {
+        response.sendError '500'
+        return
+      }
+
+      [subject:subject]
+    } else {
+      log.warn "Attempt to do administrative historical account snapshots for $subject by $subject was denied - not permitted by assigned permissions"
+      response.sendError 403
+    }
   }
 
   private void grabAttribute(Snapshot snapshot, String attr) {

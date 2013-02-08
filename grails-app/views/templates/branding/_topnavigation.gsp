@@ -10,7 +10,7 @@
       <ul class="nav">
         <aaf:isLoggedIn>
           <li>
-            <g:link controller="dashboard" action="dashboard"><g:message code="branding.nav.dashboard" /></g:link>
+            <g:link controller="snapshot" action="index"><g:message code="branding.nav.snapshot" /></g:link>
           </li>
         </aaf:isLoggedIn>
         <aaf:isNotLoggedIn>
@@ -30,21 +30,10 @@
       <div class="nav-collapse">
         <ul class="nav">
 
-          <aaf:isLoggedIn>
-            <li class="dropdown">
-              <a class="dropdown-toggle" id="workflow" role="button" data-toggle="dropdown" data-target="#" href="#">
-                <g:message code="branding.nav.workflow" />
-              </a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="workflow">
-                <li><g:link controller="workflowApproval" action="list"><g:message code="branding.nav.workflow.approval" /></g:link></li>
-                <aaf:isAdministrator>
-                  <li><g:link controller="workflowApproval" action="administrative"><g:message code="branding.nav.workflow.administration.approval" /></g:link></li>
-                </aaf:isAdministrator>
-              </ul>
-            </li>
-          </aaf:isLoggedIn>
-
           <aaf:isAdministrator>
+          <li>
+            <g:link controller="snapshot" action="historical"><g:message code="branding.nav.snapshot.historical" /></g:link>
+          </li>
           <li class="dropdown">
             <a class="dropdown-toggle" id="administration" role="button" data-toggle="dropdown" data-target="#" href="#">
               <g:message code="branding.nav.admin" />

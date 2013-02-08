@@ -9,7 +9,9 @@
       <span class="badge badge-success"><i class="icon-white icon-ok"></i></span>
     </g:else>
   </td>
-  <td>
-    <p><a href="${referenceURL}">${referenceURL}</a></p>
-  </td>
+  <g:if test="${referenceURL}">
+    <td>
+      <p><a href="${referenceURL}">${referenceURL}</a></p>
+    </td>
+  </g:if>
 </tr>

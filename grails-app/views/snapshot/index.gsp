@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
   <head>
-    <meta name="layout" content="public" />
+    <meta name="layout" content="internal" />
   </head>
   <body>
 
@@ -11,7 +11,7 @@
     <g:render template="/templates/flash" plugin="aafApplicationBase"/>
     <g:render template="/templates/errors_bean" model="['bean':snapshot]" plugin="aafApplicationBase"/>
 
-    <table class="table">
+    <table class="table table-borderless">
       <tbody>
         <tr>
           <td colspan="4" style="padding-top: 36px;"><h4 class="muted">Core Attributes</h4></td>

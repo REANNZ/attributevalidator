@@ -10,6 +10,7 @@ class DashboardController {
   }
 
   def dashboard = {
+    redirect controller:'snapshot', action:'index'
   }
 
 }

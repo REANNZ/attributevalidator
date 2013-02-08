@@ -39,9 +39,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['cn']
 
     where:
-    val << [null, '', 'Mr Test User', 'Test', 'Test User', 'Sūn Démíng', '孫德明']
-    requiredState << [false, false, false, true, true, true, true]
-    reason << ['nullable', 'blank', 'validator', null, null, null, null]
+    val << [null, '', 'Mr Test User', 'Test User;Mr Test User', 'Test', 'Test User', 'Sūn Démíng', '孫德明']
+    requiredState << [false, false, false, false, true, true, true, true]
+    reason << ['nullable', 'blank', 'validator', 'validator', null, null, null, null]
   }
 
   def 'validate mail values'() {
@@ -249,9 +249,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['givenName']
 
     where:
-    val << [null, '', 'string value']
-    requiredState << [true, true, true]
-    reason << [null, null, null]
+    val << [null, '', 'givenName;OtherName', 'givenName']
+    requiredState << [true, true, false, true]
+    reason << [null, null, 'validator', null]
   }
 
   def 'validate surname values'() {
@@ -270,9 +270,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['surname']
 
     where:
-    val << [null, '', 'string value']
-    requiredState << [true, true, true]
-    reason << [null, null, null]
+    val << [null, '', 'surname;othersurname', 'surname']
+    requiredState << [true, true, false, true]
+    reason << [null, null, 'validator', null]
   }
 
   def 'validate mobileNumber values'() {

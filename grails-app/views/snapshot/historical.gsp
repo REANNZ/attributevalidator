@@ -20,7 +20,7 @@
       <tbody>
         <g:each in="${subjects}" var="subject">
           <tr>
-            <td>${subject.principal.abbreviate(60)}</td>
+            <td>${subject.principal}</td>
             <td>${subject.cn}</td>
             <td>${subject.email}</td>
             <td><g:link action="historicalsubject" id="${subject.id}" class="btn">View</g:link></td>

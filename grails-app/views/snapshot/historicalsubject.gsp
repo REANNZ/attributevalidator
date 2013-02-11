@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <h3>Attribute history for ${subject.cn} <small>${subject.principal.abbreviate(120)}</small></h3>
+    <h3>Attribute history for ${subject.cn} <small>${subject.principal}</small></h3>
 
     <g:each in="${subject.snapshots}" var="snapshot">
       <g:set var="snapshot" value="${snapshot.validate()}"/>

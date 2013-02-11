@@ -44,11 +44,12 @@
               <li><g:link controller="role"><g:message code="branding.nav.admin.roles" /></g:link></li>
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#"><g:message code="branding.nav.admin.workflow" /> <i class="icon-chevron-right icon-white"></i></a>
-                <li><g:link controller="emailTemplate" action="list"><g:message code="branding.nav.admin.emailtemplate" /></g:link></li>
                 <ul class="dropdown-menu">
                   <li><g:link controller="workflowProcess" action="list"><g:message code="branding.nav.admin.workflow.process" /></g:link></li>
                   <li><g:link controller="workflowScript" action="list"><g:message code="branding.nav.admin.workflow.script" /></g:link></li>
                 </ul>
+              </li>
+              <li><g:link controller="emailTemplate" action="list"><g:message code="branding.nav.admin.emailtemplate" /></g:link></li>
               <li><g:link controller="adminConsole" action="index"><g:message code="branding.nav.admin.console" /></g:link></li>
               <li><g:link controller="adminDashboard" action="environment"><g:message code="branding.nav.admin.environment" /></g:link></li>
             </ul>

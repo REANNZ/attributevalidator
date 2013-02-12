@@ -10,7 +10,7 @@
 
     <g:each in="${subject.snapshots}" var="snapshot">
       <g:set var="snapshot" value="${snapshot.validate()}"/>
-      <h4>Snapshot on ${snapshot.dateCreated}</h4>
+      <h4>Snapshot on <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></h4>
       <table class="table table-borderless table-condensed">
         <tbody>
           <tr>

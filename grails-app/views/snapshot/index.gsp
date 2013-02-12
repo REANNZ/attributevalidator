@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <h2>Current snapshot of your released attributes. <small>Taken on <g:fieldValue bean="${snapshot}" field="dateCreated"/></small></h2>
+    <h2>Current snapshot of your released attributes. <small>Taken on <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></small></h2>
 
     <g:render template="/templates/flash" plugin="aafApplicationBase"/>
     <g:render template="/templates/errors_bean" model="['bean':snapshot]" plugin="aafApplicationBase"/>
@@ -40,6 +40,8 @@
         </g:each>
       </tbody>
     </table>
+
+    <g:link action="index" params="[pdf:true]" class="btn btn-large btn-info"><i class="icon-white icon-download-alt"></i> Export these details for your helpdesk</g:link>
 
   </body>
 </html>

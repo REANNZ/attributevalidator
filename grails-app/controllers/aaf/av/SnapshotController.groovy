@@ -11,7 +11,6 @@ class SnapshotController {
   def grailsApplication
 
   def index = {
-
     def snapshot = Snapshot.get(session.getAttribute(CURRENT_SNAPSHOT))
 
     if(!snapshot) {
@@ -30,6 +29,11 @@ class SnapshotController {
       session.setAttribute(CURRENT_SNAPSHOT, snapshot.id)
     } 
     else { snapshot.validate() }
+
+    if(params.pdf) {
+      renderPdf([template:'/templates/snapshot_pdf', filename:'attributevalidatorsnapshot', model:[snapshot:snapshot]])
+      return
+    } 
 
     [snapshot:snapshot]
   }

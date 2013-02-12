@@ -11,7 +11,7 @@ class InjectDevelopmentAccountFilters {
       before = {
         // We may want to extend this over time, just need a few for now.
         if(Environment.current == Environment.DEVELOPMENT && grailsApplication.config.aaf.base.realms.federated.development.active) {
-          request.setAttribute('eduPersonTargetedID', 'http://idp.com!http://sp.com!1234')
+          request.setAttribute('persistent-id', 'https://vho.test.aaf.edu.au/idp/shibboleth!-!8fde68a6-0897-4b59-a4da-ab4d465792299')
           request.setAttribute('cn', 'Development User')
           request.setAttribute('auEduPersonSharedToken', '1234')
         }

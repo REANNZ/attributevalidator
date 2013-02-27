@@ -129,9 +129,9 @@ class Snapshot {
 
     // Those which are multivaluded have values seperated by ; (Shibboleth SP standard)
     if (value?.contains(";") && multivalued) {
-      value?.split(";").each { attr -> valid = valid ? attr =~ regex:false }
+      value?.split(";").each { attr -> valid = valid ? attr ==~ regex:false }
     } 
-    else { valid = value =~ regex }
+    else { valid = value ==~ regex }
 
     valid
   }

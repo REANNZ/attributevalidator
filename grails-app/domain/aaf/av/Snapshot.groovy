@@ -46,7 +46,7 @@ class Snapshot {
     auEduPersonSharedToken (nullable:true, blank:false, size: 27..27, matches: '^[A-z0-9_-]+$', validator: {if(!it) return false })
     displayName (nullable:true, blank:false, validator: {if(!it) return false })
     eduPersonAssurance (nullable:true, blank:false, validator: validEduPersonAssurance)
-    eduPersonAffiliation (nullable:true, blank:false, inList: Snapshot.affiliations, validator: {if(!it) return false })
+    eduPersonAffiliation (nullable:true, blank:false, validator: validEduPersonAffiliation)
     eduPersonScopedAffiliation (nullable:true, blank:false, validator: validEduPersonScopedAffiliation)
     eduPersonEntitlement (nullable:true)
     eduPersonTargetedID (nullable:true, blank:false, validator: {if(!it) return false })
@@ -90,15 +90,19 @@ class Snapshot {
   static validEduPersonAssurance = { value, obj ->
     if(!value) { return false }
 
-    String regex = 'urn:mace:aaf.edu.au:iap:id:[0-4]'
+    String regex = '(urn:mace:aaf.edu.au:iap:id:[0-4]|urn:mace:aaf.edu.au:iap:authn:[0-4])'
     Snapshot.attributeMatches(regex, value)
   }
 
   static validAuthenticationMethod = { value, obj ->
     if(!value) { return false }
+  }
 
-    String regex = 'urn:mace:aaf.edu.au:iap:authn:[0-4]'
-    Snapshot.attributeMatches(regex, value, false)
+  static validEduPersonAffiliation = { value, obj ->
+    if(!value) { return false }
+
+    String regex = "(${Snapshot.affiliations.join('|')})"
+    Snapshot.attributeMatches(regex, value)
   }
 
   static validEduPersonScopedAffiliation = { value, obj ->

@@ -123,9 +123,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['eduPersonAssurance']
 
     where:
-    val << [null, '', 'really:secure:ident', 'urn:mace:aaf.edu.au:iap:id:2']
-    requiredState << [false, false, false, true]
-    reason << ['nullable', 'blank', 'validator', null]
+    val << [null, '', 'really:secure:ident', 'really:secure:ident;urn:mace:aaf.edu.au:iap:id:2', 'urn:mace:aaf.edu.au:iap:id:2', 'urn:mace:aaf.edu.au:iap:authn:2', 'urn:mace:aaf.edu.au:iap:authn:1;urn:mace:aaf.edu.au:iap:id:3']
+    requiredState << [false, false, false, false, true, true, true]
+    reason << ['nullable', 'blank', 'validator', 'validator', null, null, null]
   }
 
   def 'validate authenticationMethod values'() {
@@ -144,9 +144,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['authenticationMethod']
 
     where:
-    val << [null, '', 'really:secure:auth', 'urn:mace:aaf.edu.au:iap:authn:3']
-    requiredState << [false, false, false, true]
-    reason << ['nullable', 'blank', 'validator', null]
+    val << [null, '', 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport']
+    requiredState << [false, false, true]
+    reason << ['nullable', 'blank', null]
   }
 
   def 'validate eduPersonAffiliation values'() {
@@ -159,15 +159,16 @@ class SnapshotSpec extends spock.lang.Specification {
 
     then:
     s.eduPersonAffiliation == val
+
     requiredState == state
 
     if(!requiredState)
       reason == s.errors['eduPersonAffiliation']
 
     where:
-    val << [null, '', 'notaffiliated', 'library-walk-in']
-    requiredState << [false, false, false, true]
-    reason << ['nullable', 'blank', 'inList', null]
+    val << [null, '', 'notaffiliated', 'staff', 'member;library-walk-in']
+    requiredState << [false, false, false, true, true]
+    reason << ['nullable', 'blank', 'validator', null, null]
   }
 
   def 'validate eduPersonScopedAffiliation values'() {
@@ -186,9 +187,9 @@ class SnapshotSpec extends spock.lang.Specification {
       reason == s.errors['eduPersonScopedAffiliation']
 
     where:
-    val << [null, '', 'library-walk-in', 'notaffiliated@uni.edu', 'member@uni.edu']
-    requiredState << [false, false, false, false, true]
-    reason << ['nullable', 'blank', 'validator', 'validator', null]
+    val << [null, '', 'library-walk-in', 'notaffiliated@uni.edu', 'member@uni.edu', 'member@uni.edu;staff@uni.edu']
+    requiredState << [false, false, false, false, true, true]
+    reason << ['nullable', 'blank', 'validator', 'validator', null, null]
   }
 
   def 'validate eduPersonTargetedID values'() {

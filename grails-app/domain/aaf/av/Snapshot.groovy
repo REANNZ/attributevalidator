@@ -114,18 +114,12 @@ class Snapshot {
 
   static validGivenName = { value, obj ->
     if(!value) { return true }
-
-    if(value.contains(';')) { return false }
-
-    value?.count(' ') < 1
+    !value.contains(';')
   }
 
   static validSurname = { value, obj ->
     if(!value) { return true }
-
-    if(value.contains(';')) { return false }
-
-    value?.count(' ') < 1
+    !value.contains(';')
   }
 
   private static boolean attributeMatches(String regex, String value, boolean multivalued = true) {

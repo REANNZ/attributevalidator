@@ -3,6 +3,7 @@ package aaf.av
 import aaf.base.identity.Subject
 
 import org.apache.shiro.SecurityUtils
+import org.springframework.web.servlet.ModelAndView
 
 class SnapshotController {
 
@@ -21,6 +22,11 @@ class SnapshotController {
       }
       Snapshot.optionalAttributes.each { attr ->
         grabAttribute(snapshot, attr)
+      }
+
+      snapshot.validate(['auEduPersonSharedToken'])
+      if (snapshot.errors['auEduPersonSharedToken']) {
+        render view: 'badSharedToken', model: [auEduPersonSharedToken: snapshot.auEduPersonSharedToken]
       }
 
       // We force whatever drivel we get into the DB, as we want to see the bad data

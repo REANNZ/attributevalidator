@@ -8,7 +8,7 @@
 
     <h3>Attribute history for ${subject.cn} <small>${subject.principal}</small></h3>
 
-    <g:each in="${subject.snapshots}" var="snapshot">
+    <g:each in="${snapshots}" var="snapshot">
       <g:set var="snapshot" value="${snapshot.validate()}"/>
       <h4>Snapshot on <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></h4>
       <table class="table table-borderless table-condensed">

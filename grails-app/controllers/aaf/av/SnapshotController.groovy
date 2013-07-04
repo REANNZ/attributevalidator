@@ -70,7 +70,9 @@ class SnapshotController {
         return
       }
 
-      [subject:subject]
+      def snapshots = subject.snapshots.sort{it.dateCreated}.reverse()
+
+      [subject:subject, snapshots:snapshots]
     } else {
       log.warn "Attempt to do administrative historical account snapshots for $subject by $subject was denied - not permitted by assigned permissions"
       response.sendError 403

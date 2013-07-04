@@ -42,11 +42,11 @@ class SnapshotControllerSpec extends spock.lang.Specification {
     request.setAttribute('auEduPersonSharedToken', validToken)
 
     when:
-    def model = controller.index()
+    controller.index()
 
     then:
-    model instanceof ModelAndView
-    model.viewName == '/snapshot/badSharedToken'
+    view == '/snapshot/badSharedToken'
+    model.auEduPersonSharedToken == validToken
   }
 
   def 'show a different view when the shared token is too long'() {
@@ -55,10 +55,10 @@ class SnapshotControllerSpec extends spock.lang.Specification {
     request.setAttribute('auEduPersonSharedToken', validToken)
 
     when:
-    def model = controller.index()
+    controller.index()
 
     then:
-    model instanceof ModelAndView
-    model.viewName == '/snapshot/badSharedToken'
+    view == '/snapshot/badSharedToken'
+    model.auEduPersonSharedToken == validToken
   }
 }

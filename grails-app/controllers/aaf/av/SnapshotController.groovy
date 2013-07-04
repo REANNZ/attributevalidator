@@ -26,7 +26,7 @@ class SnapshotController {
 
       snapshot.validate(['auEduPersonSharedToken'])
       if (snapshot.errors['auEduPersonSharedToken']) {
-        return new ModelAndView('/snapshot/badSharedToken', [auEduPersonSharedToken: snapshot.auEduPersonSharedToken])
+        render view: 'badSharedToken', model: [auEduPersonSharedToken: snapshot.auEduPersonSharedToken]
       }
 
       // We force whatever drivel we get into the DB, as we want to see the bad data

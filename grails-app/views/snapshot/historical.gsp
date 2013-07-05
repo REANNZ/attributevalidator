@@ -7,6 +7,7 @@
   <body>
 
     <h2>Accounts which have accessed attribute validator</h2>
+    <p>Default view shows most recent login first. Click table headings to sort.</p>
 
     <table class="table table-borderless table-sortable">
       <thead>

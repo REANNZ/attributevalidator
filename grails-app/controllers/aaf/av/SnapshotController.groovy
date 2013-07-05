@@ -46,7 +46,14 @@ class SnapshotController {
 
   def historical = {
     if(SecurityUtils.subject.isPermitted('app:administration')) {
-      def subjects = Subject.list()
+      def criteria = Subject.createCriteria()
+
+      def subjects = criteria.listDistinct {
+        snapshots {
+          order 'dateCreated', 'desc'
+        }
+      }
+
       [subjects:subjects]
     } else {
       log.warn "Attempt to do administrative historical account listing by $subject was denied - not permitted by assigned permissions"
@@ -63,7 +70,9 @@ class SnapshotController {
         return
       }
 
-      [subject:subject]
+      def snapshots = subject.snapshots.sort{it.dateCreated}.reverse()
+
+      [subject:subject, snapshots:snapshots]
     } else {
       log.warn "Attempt to do administrative historical account snapshots for $subject by $subject was denied - not permitted by assigned permissions"
       response.sendError 403

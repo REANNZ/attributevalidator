@@ -43,7 +43,7 @@ class Snapshot {
   static constraints = {
     cn (nullable:true, blank:false, validator: validCn)
     mail (nullable:true, validator: validMail)
-    auEduPersonSharedToken (nullable:true, blank:false, size: 27..27, matches: '^[A-z0-9_-]+$', validator: {if(!it) return false })
+    auEduPersonSharedToken (nullable:true, blank:false, size: 27..27, matches: '^[A-Za-z0-9_-]+$', validator: {if(!it) return false })
     displayName (nullable:true, blank:false, validator: {if(!it) return false })
     eduPersonAssurance (nullable:true, blank:false, validator: validEduPersonAssurance)
     eduPersonAffiliation (nullable:true, blank:false, validator: validEduPersonAffiliation)
@@ -114,18 +114,12 @@ class Snapshot {
 
   static validGivenName = { value, obj ->
     if(!value) { return true }
-
-    if(value.contains(';')) { return false }
-
-    value?.count(' ') < 1
+    !value.contains(';')
   }
 
   static validSurname = { value, obj ->
     if(!value) { return true }
-
-    if(value.contains(';')) { return false }
-
-    value?.count(' ') < 1
+    !value.contains(';')
   }
 
   private static boolean attributeMatches(String regex, String value, boolean multivalued = true) {

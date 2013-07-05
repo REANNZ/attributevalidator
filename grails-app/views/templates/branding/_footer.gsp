@@ -7,5 +7,5 @@
 <p>
   <g:message code="branding.application.name"/> <strong><g:message code="branding.footer.version"/> <g:meta name="app.version"/></strong>
   <br>
-  Developed for the <a href="http://www.aaf.edu.au">Australian Access Federation</a> by Paul Stepowski and <a href="http://bradleybeddoes.com">Bradley Beddoes</a>
+  Developed for the <a href="http://www.aaf.edu.au">Australian Access Federation</a> by Paul Stepowski, <a href="http://bradleybeddoes.com">Bradley Beddoes</a> and Shaun Mangelsdorf
 </p>

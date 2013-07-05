@@ -3,6 +3,7 @@ package aaf.av
 import aaf.base.identity.Subject
 
 import org.apache.shiro.SecurityUtils
+import org.springframework.web.servlet.ModelAndView
 
 class SnapshotController {
 
@@ -23,6 +24,11 @@ class SnapshotController {
         grabAttribute(snapshot, attr)
       }
 
+      snapshot.validate(['auEduPersonSharedToken'])
+      if (snapshot.errors['auEduPersonSharedToken']) {
+        render view: 'badSharedToken', model: [auEduPersonSharedToken: snapshot.auEduPersonSharedToken]
+      }
+
       // We force whatever drivel we get into the DB, as we want to see the bad data
       snapshot.save(flush:true, validate:false, failOnError:false).validate()
 
@@ -40,7 +46,14 @@ class SnapshotController {
 
   def historical = {
     if(SecurityUtils.subject.isPermitted('app:administration')) {
-      def subjects = Subject.list()
+      def criteria = Subject.createCriteria()
+
+      def subjects = criteria.listDistinct {
+        snapshots {
+          order 'dateCreated', 'desc'
+        }
+      }
+
       [subjects:subjects]
     } else {
       log.warn "Attempt to do administrative historical account listing by $subject was denied - not permitted by assigned permissions"
@@ -57,7 +70,9 @@ class SnapshotController {
         return
       }
 
-      [subject:subject]
+      def snapshots = subject.snapshots.sort{it.dateCreated}.reverse()
+
+      [subject:subject, snapshots:snapshots]
     } else {
       log.warn "Attempt to do administrative historical account snapshots for $subject by $subject was denied - not permitted by assigned permissions"
       response.sendError 403

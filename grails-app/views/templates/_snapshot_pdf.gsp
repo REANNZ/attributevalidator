@@ -50,7 +50,7 @@
   <body>
 
     <div style="background-color:#495666; padding: 12px;">
-      <h1>Australian Access Federation - Attribute Validation</h1>
+      <h1>Tuakiri Attribute Validation</h1>
       <h2>Snapshot of released attributes as at <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></h2>
     </div>
 
@@ -99,7 +99,7 @@
     <hr/>
 
     <p>
-      For technical requirements associated with each attribute please refer to <a href="http://wiki.aaf.edu.au/tech-info/attributes">http://wiki.aaf.edu.au/tech-info/attributes</a>
+      For technical requirements associated with each attribute please refer to <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes">https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes</a>
     </p>
 
     <p>

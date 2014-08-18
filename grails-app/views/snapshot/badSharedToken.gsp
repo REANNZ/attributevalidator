@@ -18,38 +18,47 @@
           <div class="alert alert-error">
             <p><strong>Technical information:</strong></p>
 
-            <p>Presented token: <code>${auEduPersonSharedToken}</code></p>
-
-            <ul>
-              <g:if test="${auEduPersonSharedToken.length() > 27}">
-                <li>Token value is too long</li>
+            <p>Presented token: 
+              <g:if test="${auEduPersonSharedToken == null }">
+                <em>Not Supplied</em>
               </g:if>
+              <g:else>
+                <code>${auEduPersonSharedToken}</code>
+              </g:else>
+            </p>
 
-              <g:if test="${auEduPersonSharedToken.length() < 27}">
-                <li>Token value is too short</li>
-              </g:if>
+            <g:if test="${auEduPersonSharedToken != null }">
+              <ul>
+                <g:if test="${auEduPersonSharedToken.length() > 27}">
+                  <li>Token value is too long</li>
+                </g:if>
 
-              <g:if test="${auEduPersonSharedToken.matches(/.{27}=/)}">
-                <li>Padding character has not been stripped</li>
-              </g:if>
+                <g:if test="${auEduPersonSharedToken.length() < 27}">
+                  <li>Token value is too short</li>
+                </g:if>
 
-              <g:if test="${auEduPersonSharedToken.matches(/.*[\/\+].*/)}">
-                <li>
-                  Token contains <code>+</code> and/or <code>/</code> which are not included in the
-                  <strong><a href="http://www.ietf.org/rfc/rfc4648.txt">Base 64 Encoding with URL and Filename Safe Alphabet</a></strong>
-                </li>
-              </g:if>
+                <g:if test="${auEduPersonSharedToken.matches(/.{27}=/)}">
+                  <li>Padding character has not been stripped</li>
+                </g:if>
 
-              <g:if test="${auEduPersonSharedToken.matches(/.*[^A-Za-z0-9_-].*/)}">
-                <li>
-                  Token contains invalid characters;
-                  the only valid characters are <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>,
-                  <code>_</code> (underline) and <code>-</code> (minus)
-                </li>
-              </g:if>
-            </ul>
+                <g:if test="${auEduPersonSharedToken.matches(/.*[\/\+].*/)}">
+                  <li>
+                    Token contains <code>+</code> and/or <code>/</code> which are not included in the
+                    <strong><a href="http://www.ietf.org/rfc/rfc4648.txt">Base 64 Encoding with URL and Filename Safe Alphabet</a></strong>
+                  </li>
+                </g:if>
 
-            <p>Please see the <a href="http://wiki.aaf.edu.au/tech-info/attributes/auedupersonsharedtoken">AAF Wiki</a> for information on token requirements.</p>
+                <g:if test="${auEduPersonSharedToken.matches(/.*[^A-Za-z0-9_-].*/)}">
+                  <li>
+                    Token contains invalid characters;
+                    the only valid characters are <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>,
+                    <code>_</code> (underline) and <code>-</code> (minus)
+                  </li>
+                </g:if>
+              </ul>
+            </g:if>
+
+            <p>Please see the <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes">Tuakiri Attributes documentation</a> for information on the attribute requirements.</p>
           </div>
 
           <p><g:message code="branding.application.supportdesk"/></p>

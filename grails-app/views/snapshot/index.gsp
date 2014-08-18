@@ -11,6 +11,8 @@
     <g:render template="/templates/flash" plugin="aafApplicationBase"/>
     <g:render template="/templates/errors_bean" model="['bean':snapshot]" plugin="aafApplicationBase"/>
 
+    <p>For further details on the attributes requirements, please see the <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes">Tuakiri Attributes documentation</a></p>
+
     <table class="table table-borderless">
       <tbody>
         <tr>
@@ -20,10 +22,9 @@
           <th>Attribute</th>
           <th>Supplied Value</th>
           <th>Status</th>
-          <th>Required format and further details</th>
         </tr>
         <g:each in="${snapshot.coreAttributes.sort{it}}" var="attr">
-          <g:render template="/templates/attribute" model="[field:attr, referenceURL:"http://wiki.aaf.edu.au/tech-info/attributes/${attr.toLowerCase()}"]" />
+          <g:render template="/templates/attribute" model="[field:attr]" />
         </g:each>
 
         <tr>
@@ -33,10 +34,9 @@
           <th>Attribute</th>
           <th>Supplied Value</th>
           <th>Status</th>
-          <th>Required format and further details</th>
         </tr>
         <g:each in="${snapshot.optionalAttributes.sort{it}}" var="attr">
-          <g:render template="/templates/attribute" model="[field:attr, referenceURL:"http://wiki.aaf.edu.au/tech-info/attributes/${attr.toLowerCase()}"]" />
+          <g:render template="/templates/attribute" model="[field:attr]" />
         </g:each>
       </tbody>
     </table>

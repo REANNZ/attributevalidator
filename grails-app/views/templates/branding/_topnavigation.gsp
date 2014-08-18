@@ -50,13 +50,13 @@
                 </ul>
               </li>
               <li><g:link controller="emailTemplate" action="list"><g:message code="branding.nav.admin.emailtemplate" /></g:link></li>
-              <li><g:link controller="adminConsole" action="index"><g:message code="branding.nav.admin.console" /></g:link></li>
+              <li><g:link controller="console" action="index" target="_blank"><g:message code="branding.nav.admin.console" /></g:link></li>
               <li><g:link controller="adminDashboard" action="environment"><g:message code="branding.nav.admin.environment" /></g:link></li>
             </ul>
           </li>
           </aaf:isAdministrator>
 
-          <li><a href="http://support.aaf.edu.au" target="_blank"><g:message code="branding.nav.support" /></a></li>
+          <li><a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Support+Desk" target="_blank"><g:message code="branding.nav.support" /></a></li>
         </ul>
 
         <ul class="nav pull-right">

@@ -50,7 +50,7 @@
   <body>
 
     <div style="background-color:#495666; padding: 12px;">
-      <h1>Australian Access Federation - Attribute Validation</h1>
+      <h1>Tuakiri Attribute Validation</h1>
       <h2>Snapshot of released attributes as at <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></h2>
     </div>
 

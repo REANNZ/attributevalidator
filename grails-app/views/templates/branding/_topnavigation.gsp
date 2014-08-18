@@ -56,7 +56,7 @@
           </li>
           </aaf:isAdministrator>
 
-          <li><a href="http://support.aaf.edu.au" target="_blank"><g:message code="branding.nav.support" /></a></li>
+          <li><a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Support+Desk" target="_blank"><g:message code="branding.nav.support" /></a></li>
         </ul>
 
         <ul class="nav pull-right">

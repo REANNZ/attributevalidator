@@ -58,7 +58,7 @@
               </ul>
             </g:if>
 
-            <p>Please see the <a href="http://wiki.aaf.edu.au/tech-info/attributes/auedupersonsharedtoken">AAF Wiki</a> for information on token requirements.</p>
+            <p>Please see the <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes">Tuakiri Attributes documentation</a> for information on the attribute requirements.</p>
           </div>
 
           <p><g:message code="branding.application.supportdesk"/></p>

@@ -99,7 +99,7 @@
     <hr/>
 
     <p>
-      For technical requirements associated with each attribute please refer to <a href="http://wiki.aaf.edu.au/tech-info/attributes">http://wiki.aaf.edu.au/tech-info/attributes</a>
+      For technical requirements associated with each attribute please refer to <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes">https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes</a>
     </p>
 
     <p>

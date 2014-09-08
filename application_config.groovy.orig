@@ -107,6 +107,10 @@ aaf {
           telephoneNumber = "telephoneNumber"
           postalAddress = "postalAddress"
           organizationalUnit = "organizationalUnit"
+          auEduPersonLegalName = "auEduPersonLegalName"
+          auEduPersonAffiliation = "auEduPersonAffiliation"
+          eduPersonPrincipalName = "eppn"
+          eduPersonPrimaryAffiliation = "primary-affiliation"
           schacHomeOrganization = "homeOrganization"
           schacHomeOrganizationType = "homeOrganizationType"
         }

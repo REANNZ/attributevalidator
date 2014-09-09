@@ -11,6 +11,7 @@ class SnapshotControllerSpec extends spock.lang.Specification {
       active: true,
       development: [ active: false ],
     ]
+    grailsApplication.config.aaf.av.alert_on_sharedtoken_errors = true
 
     def subject = Mock(org.apache.shiro.subject.Subject)
     controller.metaClass.getSubject = {-> subject}

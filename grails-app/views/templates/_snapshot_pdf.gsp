@@ -8,12 +8,12 @@
       table td {word-wrap: break-word;}
       
       h1 {
-        color:#f2f2f2;
+        color:#7CAB1D;
         font-size: 1.4em;
       }
 
       h2{
-        color:#f2f2f2;
+        color:#7CAB1D;
         font-size: 1.2em;
       }
 
@@ -22,7 +22,7 @@
       }
 
       h3 {
-        color:#666666;
+        color:#628615;
         font-size: 1.1em;
       }
 
@@ -31,7 +31,7 @@
       }
 
       h4{
-        color:#666666;
+        color:#628615;
       }
 
       h3 small {
@@ -49,7 +49,7 @@
   </head>
   <body>
 
-    <div style="background-color:#495666; padding: 12px;">
+    <div style="background-color:#FFFFFF; padding: 12px;">
       <h1>Tuakiri Attribute Validation</h1>
       <h2>Snapshot of released attributes as at <g:formatDate date="${snapshot.dateCreated}" type="datetime" style="MEDIUM"/></h2>
     </div>

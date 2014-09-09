@@ -49,7 +49,7 @@ environments {
 
 aaf {
   av {
-    alert_on_sharedtoken_errors = true
+    alert_on_sharedtoken_errors = false
   }
 
   base {

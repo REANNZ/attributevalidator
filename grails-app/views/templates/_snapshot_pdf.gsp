@@ -9,12 +9,12 @@
       
       h1 {
         color:#7CAB1D;
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
 
       h2{
         color:#7CAB1D;
-        font-size: 1.2em;
+        font-size: 1.0em;
       }
 
       h2 small {
@@ -23,7 +23,7 @@
 
       h3 {
         color:#628615;
-        font-size: 1.1em;
+        font-size: 1.0em;
       }
 
       h3.error {
@@ -32,6 +32,7 @@
 
       h4{
         color:#628615;
+        font-size: 1.0em;
       }
 
       h3 small {
@@ -108,11 +109,8 @@
 
     <hr/>
     
-    <p>
-      <small>
-      <g:message code="branding.application.name"/> <strong><g:message code="branding.footer.version"/> <g:meta name="app.version"/></strong>
-      </small>
-    </p>
-
+    <small>
+    <g:message code="branding.application.name"/> <strong><g:message code="branding.footer.version"/> <g:meta name="app.version"/></strong>
+    </small>
   </body>
 </html>

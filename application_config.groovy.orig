@@ -48,6 +48,10 @@ environments {
 }
 
 aaf {
+  av {
+    alert_on_sharedtoken_errors = true
+  }
+
   base {
     //Session Expiry Warning - minutes
     session_warning = 50 

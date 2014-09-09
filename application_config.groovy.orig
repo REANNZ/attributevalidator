@@ -48,6 +48,10 @@ environments {
 }
 
 aaf {
+  av {
+    alert_on_sharedtoken_errors = false
+  }
+
   base {
     //Session Expiry Warning - minutes
     session_warning = 50 
@@ -99,14 +103,18 @@ aaf {
           eduPersonEntitlement = "entitlement"
           eduPersonTargetedID = "persistent-id"
           o = "o"
-          authenticationMethod = "authenticationMethod"
+          authenticationMethod = "Shib-Authentication-Method"
           
           givenName = "givenName"
           surname = "sn"
           mobileNumber = "mobileNumber"
           telephoneNumber = "telephoneNumber"
           postalAddress = "postalAddress"
-          organizationalUnit = "organizationalUnit"
+          organizationalUnit = "ou"
+          auEduPersonLegalName = "auEduPersonLegalName"
+          auEduPersonAffiliation = "auEduPersonAffiliation"
+          eduPersonPrincipalName = "eppn"
+          eduPersonPrimaryAffiliation = "primary-affiliation"
           schacHomeOrganization = "homeOrganization"
           schacHomeOrganizationType = "homeOrganizationType"
         }

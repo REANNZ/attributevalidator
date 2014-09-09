@@ -24,9 +24,11 @@ class SnapshotController {
         grabAttribute(snapshot, attr)
       }
 
-      snapshot.validate(['auEduPersonSharedToken'])
-      if (snapshot.errors['auEduPersonSharedToken']) {
-        render view: 'badSharedToken', model: [auEduPersonSharedToken: snapshot.auEduPersonSharedToken]
+      if (grailsApplication.config.aaf.av.alert_on_sharedtoken_errors) {
+        snapshot.validate(['auEduPersonSharedToken'])
+        if (snapshot.errors['auEduPersonSharedToken']) {
+          render view: 'badSharedToken', model: [auEduPersonSharedToken: snapshot.auEduPersonSharedToken]
+        }
       }
 
       // We force whatever drivel we get into the DB, as we want to see the bad data

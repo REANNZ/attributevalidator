@@ -92,10 +92,10 @@ aaf {
           
           cn = "cn"
           email= "mail"
-          sharedToken = "auEduPersonSharedToken"
+          sharedToken = "shared-token"
 
           mail = "mail"
-          auEduPersonSharedToken = "auEduPersonSharedToken"
+          auEduPersonSharedToken = "shared-token"
           displayName = "displayName"
           eduPersonAssurance = "assurance"
           eduPersonAffiliation = "unscoped-affiliation"
@@ -107,7 +107,7 @@ aaf {
           
           givenName = "givenName"
           surname = "sn"
-          mobileNumber = "mobileNumber"
+          mobileNumber = "mobile"
           telephoneNumber = "telephoneNumber"
           postalAddress = "postalAddress"
           organizationalUnit = "ou"

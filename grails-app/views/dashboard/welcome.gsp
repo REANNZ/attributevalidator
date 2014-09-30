@@ -7,6 +7,13 @@
 
     <div class="row">
       <div class="span12">
+
+        <g:if test="${grailsApplication.config.aaf.av.welcome_alert}">
+          <div class="alert alert-info">
+              <p>${grailsApplication.config.aaf.av.welcome_alert}</p>
+          </div>
+        </g:if>
+
         <div class="hero-unit">
             <h2>Attribute Validator</h2>
             <p>

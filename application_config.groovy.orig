@@ -96,7 +96,7 @@ aaf {
           sharedToken = "shared-token"
 
           mail = "mail"
-          auEduPersonSharedToken = "shared-token"
+          auEduPersonSharedToken = "auEduPersonSharedToken"
           displayName = "displayName"
           eduPersonAssurance = "assurance"
           eduPersonAffiliation = "unscoped-affiliation"

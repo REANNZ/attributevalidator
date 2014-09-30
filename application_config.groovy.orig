@@ -50,6 +50,7 @@ environments {
 aaf {
   av {
     alert_on_sharedtoken_errors = true
+    welcome_alert = ''
   }
 
   base {

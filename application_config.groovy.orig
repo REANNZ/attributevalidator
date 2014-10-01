@@ -93,7 +93,7 @@ aaf {
           
           cn = "cn"
           email= "mail"
-          sharedToken = "shared-token"
+          sharedToken = "auEduPersonSharedToken"
 
           mail = "mail"
           auEduPersonSharedToken = "auEduPersonSharedToken"

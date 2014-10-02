@@ -39,7 +39,7 @@ class SnapshotController {
     else { snapshot.validate() }
 
     if(params.pdf) {
-      renderPdf([template:'/templates/snapshot_pdf', filename:'attributevalidatorsnapshot', model:[snapshot:snapshot]])
+      renderPdf([template:'/templates/snapshot_pdf', filename:'attributevalidatorsnapshot.pdf', model:[snapshot:snapshot]])
       return
     } 
 

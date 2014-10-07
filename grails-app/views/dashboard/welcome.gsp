@@ -10,7 +10,7 @@
         <div class="hero-unit">
             <h2>Attribute Validator</h2>
             <p>
-              This service will validate the atrributes provided about you from your identity provider ensuring they are provided in a format that is suitable for consumption by AAF connected services.
+              This service will validate the attributes provided about you from your identity provider ensuring they are provided in a format that is suitable for consumption by AAF connected services.
             </p>
             <p>
               <g:link controller="snapshot" action="index" class="btn btn-large btn-info"><i class="icon-white icon-user"></i> Show me my attributes</g:link>

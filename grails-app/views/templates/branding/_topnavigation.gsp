@@ -56,7 +56,7 @@
           </li>
           </aaf:isAdministrator>
 
-          <li><a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Support+Desk" target="_blank"><g:message code="branding.nav.support" /></a></li>
+          <li><a href="mailto:tuakiri@reannz.co.nz" target="_blank"><g:message code="branding.nav.support" /></a></li>
         </ul>
 
         <ul class="nav pull-right">

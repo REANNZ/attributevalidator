@@ -113,6 +113,7 @@ aaf {
           eduPersonPrimaryAffiliation = "primary-affiliation"
           schacHomeOrganization = "homeOrganization"
           schacHomeOrganizationType = "homeOrganizationType"
+          eduPersonOrcid = "eduPersonOrcid"
         }
 
         development {

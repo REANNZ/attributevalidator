@@ -14,6 +14,7 @@ class Snapshot {
   public static final optionalAttributes = ['givenName', 'surname', 'mobileNumber', 'telephoneNumber', 'postalAddress', 'organizationalUnit', 
                                             'auEduPersonLegalName', 'auEduPersonAffiliation',
                                             'eduPersonPrincipalName', 'eduPersonPrimaryAffiliation',
+                                            'eduPersonOrcid',
                                             'schacHomeOrganization', 'schacHomeOrganizationType']
 
   Date dateCreated
@@ -45,6 +46,7 @@ class Snapshot {
   String auEduPersonAffiliation         // oid:1.3.6.1.4.1.27856.1.2.1
   String eduPersonPrincipalName         // oid:1.3.6.1.4.1.5923.1.1.1.6
   String eduPersonPrimaryAffiliation    // oid:1.3.6.1.4.1.5923.1.1.1.5
+  String eduPersonOrcid                 // oid:1.3.6.1.4.1.5923.1.1.1.16
   String schacHomeOrganization          // oid:1.3.6.1.4.1.25178.1.2.9 
   String schacHomeOrganizationType      // oid:1.3.6.1.4.1.25178.1.2.10
 
@@ -71,6 +73,7 @@ class Snapshot {
     auEduPersonAffiliation (nullable:true, blank:true, validator: validAuEduPersonAffiliation)
     eduPersonPrimaryAffiliation (nullable:true, blank:true, validator: validEduPersonPrimaryAffiliation)
     eduPersonPrincipalName (nullable:true, blank:true, validator: validEduPersonPrincipalName)
+    eduPersonOrcid (nullable:true, blank:true, validator: validEduPersonOrcid)
     
     // Regex adapted from http://stackoverflow.com/a/106223 for RFC compliance, ensures at least xyz.com as opposed to documented which allows xyz
     schacHomeOrganization (nullable:true, blank:true, matches: "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)+([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])\$")
@@ -123,6 +126,16 @@ class Snapshot {
     if (value.contains(";")) { return false }
 
     String regex = "([a-zA-Z0-9\\-_\\.\\+/]+)@((([A-z0-9\\-]+)\\.)*[A-z0-9\\-]+)"
+
+    Snapshot.attributeMatches(regex, value)
+  }
+
+  static validEduPersonOrcid = { value, obj ->
+    if(!value) { return true } // null value is OK
+
+    if (value.contains(";")) { return false }
+
+    String regex = "(http://orcid.org/[a-zA-Z0-9\\-]+)"
 
     Snapshot.attributeMatches(regex, value)
   }

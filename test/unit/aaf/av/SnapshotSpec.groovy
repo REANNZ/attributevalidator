@@ -88,6 +88,27 @@ class SnapshotSpec extends spock.lang.Specification {
     reason << ['nullable', 'blank', 'validator', null]
   }
 
+  def 'validate eduPersonOrcid values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.eduPersonOrcid = val
+    def state = s.validate()
+
+    then:
+    s.eduPersonOrcid == val
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['eduPersonOrcid']
+
+    where:
+    val << [null, '', '0000-0001-1825-000X', 'http://orcid.org/', 'http://orcid.org/0000-0001-1825-000X']
+    requiredState << [true, true, false, false, true]
+    reason << ['nullable', 'blank', 'validator', 'validator', null]
+  }
+
   def 'validate auEduPersonSharedToken values'() {
     setup:
     Snapshot s = createValidSnapshot()

@@ -221,7 +221,7 @@
                                       </td>
                                       <td valign="top" width="190">
                                         <div >
-                                            Do you need help with the Federation?<br /><a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Support+Desk" target="_blank">Access the Tuakiri support desk</a>.
+                                            Do you need help with the Federation?<br /><a href="mailto:tuakiri@reannz.co.nz" target="_blank">Access the Tuakiri support desk</a>.
                                           </div>
                                       </td>
                                   </tr>
@@ -272,7 +272,7 @@
                                                 <tr>
                                                     <td colspan="2" valign="middle" id="social" style="background-color:#FAFAFA; border:0;">
                                                         <div style="text-align:center;">
-                                                            &nbsp;<a href="http://twitter.com/ausaccessfed" style="font-weight: bold; color:#E36C0A;">Follow on Twitter</a> | <a href="http://www.facebook.com/ausaccessfed" style="font-weight: bold; color:#E36C0A;">Friend on Facebook</a> | <a href="https://tuakiri.ac.nz/confluence/display/Tuakiri/Support+Desk" style="font-weight: bold; color:#E36C0A;">Get Tuakiri Support</a>&nbsp;
+                                                            &nbsp;<a href="http://twitter.com/ausaccessfed" style="font-weight: bold; color:#E36C0A;">Follow on Twitter</a> | <a href="http://www.facebook.com/ausaccessfed" style="font-weight: bold; color:#E36C0A;">Friend on Facebook</a> | <a href="mailto:tuakiri@reannz.co.nz" style="font-weight: bold; color:#E36C0A;">Get Tuakiri Support</a>&nbsp;
                                                         </div>
                                                     </td>
                                                 </tr>

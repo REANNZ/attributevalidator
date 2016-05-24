@@ -8,12 +8,12 @@
       table td {word-wrap: break-word;}
       
       h1 {
-        color:#7CAB1D;
+        color:#00B9E4;
         font-size: 1.2em;
       }
 
       h2{
-        color:#7CAB1D;
+        color:#00B9E4;
         font-size: 1.0em;
       }
 
@@ -22,7 +22,7 @@
       }
 
       h3 {
-        color:#628615;
+        color:#00B9E4;
         font-size: 1.0em;
       }
 
@@ -31,7 +31,7 @@
       }
 
       h4{
-        color:#628615;
+        color:#00B9E4;
         font-size: 1.0em;
       }
 

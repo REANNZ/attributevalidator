@@ -14,6 +14,8 @@ class SnapshotSpec extends spock.lang.Specification {
     def snapshot = Snapshot.build(cn: 'test user', mail:'user@test.com', eduPersonAssurance:'urn:mace:aaf.edu.au:iap:id:0', 
                   displayName: 'test user', authenticationMethod:'urn:mace:aaf.edu.au:iap:authn:0', eduPersonScopedAffiliation:'member@test.com',
                   eduPersonTargetedID:'http://idp.test.edu!http://sp.test.com!1234', o: 'Test Org', eduPersonAffiliation: 'member', 
+                  eduPersonPrimaryAffiliation: 'member', auEduPersonAffiliation: 'honorary-staff', auEduPersonLegalName: 'test user',
+                  eduPersonPrincipalName: 'testuser@test.com',
                   schacHomeOrganization:'test.com', schacHomeOrganizationType:'urn:test', auEduPersonSharedToken:'0DzXjxDQ9eCQu5BMbl4hrodsAYc')
 
     mockForConstraintsTests(Snapshot, [snapshot])
@@ -65,6 +67,48 @@ class SnapshotSpec extends spock.lang.Specification {
     reason << ['nullable', 'blank', 'validator', null]
   }
 
+  def 'validate eduPersonPrincipalName values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.eduPersonPrincipalName = val
+    def state = s.validate()
+
+    then:
+    s.eduPersonPrincipalName == val
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['eduPersonPrincipalName']
+
+    where:
+    val << [null, '', 'testuser', 'user@test.com']
+    requiredState << [true, true, false, true]
+    reason << ['nullable', 'blank', 'validator', null]
+  }
+
+  def 'validate eduPersonOrcid values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.eduPersonOrcid = val
+    def state = s.validate()
+
+    then:
+    s.eduPersonOrcid == val
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['eduPersonOrcid']
+
+    where:
+    val << [null, '', '0000-0001-1825-000X', 'http://orcid.org/', 'http://orcid.org/0000-0001-1825-000X']
+    requiredState << [true, true, false, false, true]
+    reason << ['nullable', 'blank', 'validator', 'validator', null]
+  }
+
   def 'validate auEduPersonSharedToken values'() {
     setup:
     Snapshot s = createValidSnapshot()
@@ -105,6 +149,27 @@ class SnapshotSpec extends spock.lang.Specification {
     val << [null, '', 'testuser', 'Mr Reginald Testbody III jr']
     requiredState << [false, false, true, true]
     reason << ['nullable', 'blank', null, null]
+  }
+
+  def 'validate auEduPersonLegalName values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.auEduPersonLegalName = val
+    def state = s.validate()
+
+    then:
+    s.auEduPersonLegalName == val
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['auEduPersonLegalName']
+
+    where:
+    val << [null, '', 'testuser', 'Test user;Test legal user', 'Mr Reginald Testbody III jr']
+    requiredState << [true, true, true, false, true]
+    reason << ['nullable', 'blank', null, 'validator', null]
   }
 
   def 'validate eduPersonAssurance values'() {
@@ -171,6 +236,28 @@ class SnapshotSpec extends spock.lang.Specification {
     reason << ['nullable', 'blank', 'validator', null, null]
   }
 
+  def 'validate eduPersonPrimaryAffiliation values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.eduPersonPrimaryAffiliation = val
+    def state = s.validate()
+
+    then:
+    s.eduPersonPrimaryAffiliation == val
+
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['eduPersonPrimaryAffiliation']
+
+    where:
+    val << [null, '', 'notaffiliated', 'staff', 'member;library-walk-in']
+    requiredState << [true, true, false, true, false]
+    reason << ['nullable', 'blank', 'validator', null, 'validator']
+  }
+
   def 'validate eduPersonScopedAffiliation values'() {
     setup:
     Snapshot s = createValidSnapshot()
@@ -190,6 +277,28 @@ class SnapshotSpec extends spock.lang.Specification {
     val << [null, '', 'library-walk-in', 'notaffiliated@uni.edu', 'member@uni.edu', 'member@uni.edu;staff@uni.edu']
     requiredState << [false, false, false, false, true, true]
     reason << ['nullable', 'blank', 'validator', 'validator', null, null]
+  }
+
+  def 'validate auEduPersonAffiliation values'() {
+    setup:
+    Snapshot s = createValidSnapshot()
+
+    when:
+    s.auEduPersonAffiliation = val
+    def state = s.validate()
+
+    then:
+    s.auEduPersonAffiliation == val
+
+    requiredState == state
+
+    if(!requiredState)
+      reason == s.errors['auEduPersonAffiliation']
+
+    where:
+    val << [null, '', 'notaffiliated', 'visiting-staff', 'visiting-staff;postgraduate-research-student']
+    requiredState << [true, true, false, true, true]
+    reason << ['nullable', 'blank', 'validator', null, null]
   }
 
   def 'validate eduPersonTargetedID values'() {

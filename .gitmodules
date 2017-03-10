@@ -1,0 +1,3 @@
+[submodule "aaf-patched-groovy"]
+	path = aaf-patched-groovy
+	url = https://github.com/ausaccessfed/groovy.git

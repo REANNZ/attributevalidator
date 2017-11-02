@@ -116,8 +116,8 @@ aaf {
           auEduPersonAffiliation = "auEduPersonAffiliation"
           eduPersonPrincipalName = "eppn"
           eduPersonPrimaryAffiliation = "primary-affiliation"
-          schacHomeOrganization = "homeOrganization"
-          schacHomeOrganizationType = "homeOrganizationType"
+          schacHomeOrganization = "schacHomeOrganization"
+          schacHomeOrganizationType = "schacHomeOrganizationType"
           eduPersonOrcid = "eduPersonOrcid"
         }
 
